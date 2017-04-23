@@ -21,7 +21,7 @@ end
 %Gaussian kernel with degree 2
 for x = 1:size(y_train,2)
     Z = y_train(:,x);
-    SVMModel = fitcsvm(Training,Z,'KernelFunction','gaussian','KernelScale',2);
+    SVMModel = fitcsvm(Training,Z,'KernelFunction','gaussian','KernelScale','auto');
     L = predict(SVMModel,Test);
     test_labels2 = horzcat(test_labels2,L);
 end
@@ -62,4 +62,4 @@ for x = 1:size(test_labels2,1)
 end
 accuracy = (totalAccuracy2/size(test_labels2,1))*100;
 disp('For Gaussian kernel SVM');
-disp(accuracy); %49.5406
+disp(accuracy); %64.3146
